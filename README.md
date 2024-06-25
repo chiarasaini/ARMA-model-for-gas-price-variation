@@ -1,2 +1,2 @@
 # ARMA-model-for-gas-price-variation
-ARMA model for an analysis of variation of gas prices and inflation
+This project analyzes the relationship between the annual rate of change in gas prices and inflation. The study's primary goal is to identify a positive correlation between gas prices and inflation and predict the future inflation rate. Both gas prices and inflation data used in the analysis are time-series data. Therefore, the project uses a VAR model for prediction. Moreover, to test the statistical foundation of the analysis, the study includes the Granger's Causality Test, the Cointegration Test, the Augmented Dickey-Fuller Test, the selection of the order p, and the Durbin Watson Statistic.
