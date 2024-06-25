@@ -1,0 +1,70 @@
+---
+title: "Plots"
+output: word_document
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(readxl)
+library(vars)
+library(urca)
+library(tseries)
+library(mFilter)
+library(forecast)
+library("ggthemes") 
+```
+
+
+```{r}
+foglio <- read_excel("/Users/chiarasaini/Desktop/proj macro/energia tot EU.xlsx")
+View(foglio)
+```
+
+
+```{r}
+#EU
+
+Electricity <- ts(foglio$elecr_eu, start = c(2000, 12), frequency = 12)
+Gas <- ts(foglio_tot$gas_eu, start = c(2000, 12), frequency = 12)
+Energy <- ts(foglio_tot$energy_eu, start = c(2000, 12), frequency = 12)
+Fuel <- ts(foglio_tot$fuels_eu, start = c(2000, 12), frequency = 12)
+autoplot(cbind(Electricity, Gas, Fuel,Energy), xlab="Time", ylab="Annual rate of change" , main="Variation of energy prices from 2000 to 2022, EU") + theme_economist()
+```
+
+```{r}
+#EU
+geu <- ts(foglio$gas_eu, start = c(2000, 12), frequency = 12)
+heu <- ts(foglio$hicp_eu, start = c(2000, 12), frequency = 12)
+
+autoplot(geu, xlab="Time", ylab="Annual rate of change" , main="Variation of gas prices from 2000 to 2022, EU", colour = 'gray48', size = 1)+ theme_economist()
+
+autoplot(heu, xlab="Time", ylab="Annual rate of change" , main="Variation of inflation rate from 2000 to 2022, EU", colour = 'black',  size = 1)+ theme_economist()
+```
+
+
+```{r}
+#ITALY
+git <- ts(foglio$gas_it, start = c(2000, 12), frequency = 12)
+hit <- ts(foglio$hicp_it, start = c(2000, 12), frequency = 12)
+
+autoplot(git, xlab="Time", ylab="Annual rate of change" , main="Variation of gas prices from 2000 to 2022, Italy", colour = 'seagreen3', size=1)+ theme_economist()
+
+autoplot(hit, xlab="Time", ylab="Annual rate of change" , main="Variation of inflation rate from 2000 to 2022, Italy", colour = 'seagreen', size=1)+ theme_economist()
+
+```
+
+
+```{r}
+#FRANCE
+gfr <- ts(foglio$gas_fr, start = c(2000, 12), frequency = 12)
+hfr <- ts(foglio$hicp_fr, start = c(2000, 12), frequency = 12)
+
+autoplot(gfr, xlab="Time", ylab="Annual rate of change" , main="Variation of gas prices from 2000 to 2022, France", colour = 'orange', size=1)+ theme_economist()
+
+autoplot(hfr, xlab="Time", ylab="Annual rate of change" , main="Variation of inflation rate from 2000 to 2022, France", colour = 'salmon', size=1)+ theme_economist()
+
+```
+
+
+
